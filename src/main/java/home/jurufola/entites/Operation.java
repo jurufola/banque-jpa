@@ -44,7 +44,7 @@ public class Operation {
         this.motif = motif;
         this.compte = compte;
         //Mise à jour solde dans le compte
-        if(compte.getSolde() < montant){
+        if(compte.getSolde() + montant < 0){
             System.out.println("Montant solde insuffissant Vous ne pouvez pas debiter un montant de plus de " + compte.getSolde());
             compte.setSolde(0.0);
             System.out.println("Vous avez été débité de la totalité de votre solde! Merci de provisionner le compte avant toute opération");
