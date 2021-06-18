@@ -3,6 +3,9 @@ package home.jurufola.entites;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Classe Compte
+ */
 @Entity
 @Table(name = "compte")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -29,10 +32,10 @@ public class Compte {
 
     /**
      * Constructeur
-     * @param numero
-     * @param solde
-     * @param operations
-     * @param clients
+     * @param numero Le numéro
+     * @param solde Le solde
+     * @param operations La liste des opérations
+     * @param clients La liste des clients
      */
     public Compte(String numero, double solde, List<Operation> operations, List<Client> clients) {
         this.numero = numero;
@@ -49,7 +52,7 @@ public class Compte {
 
     /**
      * Getteur id
-     * @return
+     * @return L'id
      */
     public int getId() {
         return id;
@@ -57,7 +60,7 @@ public class Compte {
 
     /**
      * Setteur id
-     * @param id
+     * @param id L'id
      */
     public void setId(int id) {
         this.id = id;
@@ -65,7 +68,7 @@ public class Compte {
 
     /**
      * Getteur numéro
-     * @return
+     * @return Le numéro
      */
     public String getNumero() {
         return numero;
@@ -73,7 +76,7 @@ public class Compte {
 
     /**
      * Setteur numéro
-     * @param numero
+     * @param numero Le numéro
      */
     public void setNumero(String numero) {
         this.numero = numero;
@@ -81,7 +84,7 @@ public class Compte {
 
     /**
      * Getteur solde
-     * @return
+     * @return Le solde
      */
     public double getSolde() {
         return solde;
@@ -89,7 +92,7 @@ public class Compte {
 
     /**
      * Setteur solde
-     * @param solde
+     * @param solde Le solde
      */
     public void setSolde(double solde) {
         this.solde = solde;
@@ -97,7 +100,7 @@ public class Compte {
 
     /**
      * Getteur liste opérations
-     * @return
+     * @return La liste des opérations
      */
     public List<Operation> getOperations() {
         return operations;
@@ -105,7 +108,7 @@ public class Compte {
 
     /**
      * Setteur liste opérations
-     * @param operations
+     * @param operations La liste des opérations
      */
     public void setOperations(List<Operation> operations) {
         this.operations = operations;
@@ -113,7 +116,7 @@ public class Compte {
 
     /**
      * Getteur liste clients
-     * @return
+     * @return La liste des clients
      */
     public List<Client> getClients() {
         return clients;
@@ -121,9 +124,24 @@ public class Compte {
 
     /**
      * Setteur liste clients
-     * @param clients
+     * @param clients La liste des clients
      */
     public void setClients(List<Client> clients) {
         this.clients = clients;
+    }
+
+    /**
+     * Redefinition toString()
+     * @return Une chaîne de caractère avec la description du compte
+     */
+    @Override
+    public String toString() {
+        return "Compte{" +
+                "id=" + id +
+                ", numero='" + numero + '\'' +
+                ", solde=" + solde +
+                ", operations=" + operations +
+                ", clients=" + clients +
+                '}';
     }
 }

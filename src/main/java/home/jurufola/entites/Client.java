@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * Classe Client
+ * @author juruf_000
+ */
 @Entity
 @Table(name = "client")
 public class Client {
@@ -36,12 +40,12 @@ public class Client {
 
     /**
      * Constructeur
-     * @param nom
-     * @param prenom
-     * @param dateNaissance
-     * @param banque
-     * @param adresse
-     * @param comptes
+     * @param nom Le nom du client
+     * @param prenom Le prénom du client
+     * @param dateNaissance  La date de naissance du client
+     * @param banque La banque du client
+     * @param adresse L'adresse du client
+     * @param comptes Les différents comptes du client
      */
     public Client(String nom, String prenom, LocalDate dateNaissance, Banque banque, Adresse adresse, List<Compte> comptes) {
         this.nom = nom;
@@ -61,7 +65,7 @@ public class Client {
 
     /**
      * Getteur id
-     * @return
+     * @return l'id du client
      */
     public int getId() {
         return id;
@@ -69,7 +73,7 @@ public class Client {
 
     /**
      * Setteur id
-     * @param id
+     * @param id L'id du client
      */
     public void setId(int id) {
         this.id = id;
@@ -77,7 +81,7 @@ public class Client {
 
     /**
      * Getteur nom
-     * @return
+     * @return Le nom du client
      */
     public String getNom() {
         return nom;
@@ -85,7 +89,7 @@ public class Client {
 
     /**
      * Setteur nom
-     * @param nom
+     * @param nom Le nom du client
      */
     public void setNom(String nom) {
         this.nom = nom;
@@ -93,7 +97,7 @@ public class Client {
 
     /**
      * Getteur prenom
-     * @return
+     * @return Le prénom du client
      */
     public String getPrenom() {
         return prenom;
@@ -101,7 +105,7 @@ public class Client {
 
     /**
      * Setteur prenom
-     * @param prenom
+     * @param prenom Le prénom du client
      */
     public void setPrenom(String prenom) {
         this.prenom = prenom;
@@ -109,7 +113,7 @@ public class Client {
 
     /**
      * Getteur date de naissance
-     * @return
+     * @return La date de niassance du client
      */
     public LocalDate getDateNaissance() {
         return dateNaissance;
@@ -117,7 +121,7 @@ public class Client {
 
     /**
      * Setteur date de naissance
-     * @param dateNaissance
+     * @param dateNaissance La date de naissance ud client
      */
     public void setDateNaissance(LocalDate dateNaissance) {
         this.dateNaissance = dateNaissance;
@@ -125,7 +129,7 @@ public class Client {
 
     /**
      * Getteur banque
-     * @return
+     * @return La banque du client
      */
     public Banque getBanque() {
         return banque;
@@ -133,7 +137,7 @@ public class Client {
 
     /**
      * Setteur banque
-     * @param banque
+     * @param banque La banque du client
      */
     public void setBanque(Banque banque) {
         this.banque = banque;
@@ -141,7 +145,7 @@ public class Client {
 
     /**
      * Getteur adresse
-     * @return
+     * @return L'adresse du client
      */
     public Adresse getAdresse() {
         return adresse;
@@ -149,7 +153,7 @@ public class Client {
 
     /**
      * Setteur adresse
-     * @param adresse
+     * @param adresse L'adresse du client
      */
     public void setAdresse(Adresse adresse) {
         this.adresse = adresse;
@@ -157,7 +161,7 @@ public class Client {
 
     /**
      * Getteur liste comptes
-     * @return
+     * @return La liste des comptes du client
      */
     public List<Compte> getComptes() {
         return comptes;
@@ -165,9 +169,26 @@ public class Client {
 
     /**
      * Setteur liste comptes
-     * @param comptes
+     * @param comptes La liste des comptes du client
      */
     public void setComptes(List<Compte> comptes) {
         this.comptes = comptes;
+    }
+
+    /**
+     * Redefinition toString()
+     * @return Une chaîne de caractère avec la description deu client
+     */
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", dateNaissance=" + dateNaissance +
+                ", banque=" + banque +
+                ", adresse=" + adresse +
+                ", comptes=" + comptes +
+                '}';
     }
 }

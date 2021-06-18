@@ -3,6 +3,11 @@ package home.jurufola.entites;
 import javax.persistence.*;
 import java.time.LocalDate;
 
+/**
+ * Classe Operation
+ * @author juruf_000
+ */
+
 @Entity
 @Table(name = "operation")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -28,16 +33,22 @@ public class Operation {
 
     /**
      * constructeur
-     * @param date
-     * @param montant
-     * @param motif
-     * @param compte
+     * @param date La date de l'opération
+     * @param montant Le montant de l'opération
+     * @param motif Le motif de l'opération
+     * @param compte Le compte associé
      */
     public Operation(LocalDate date, double montant, String motif, Compte compte) {
         this.date = date;
         this.montant = montant;
         this.motif = motif;
         this.compte = compte;
+        //Mise à jour solde dans le compte
+        if(compte.getSolde() < montant){
+            System.out.println("Montant solde insuffissant Vous ne pouvez pas debiter un montant de plus de " + compte.getSolde());
+            compte.setSolde(0.0);
+            System.out.println("Vous avez été débité de la totalité de votre solde! Merci de provisionner le compte avant toute opération");
+        }else compte.setSolde(compte.getSolde() + montant);
     }
 
     /**
@@ -48,7 +59,7 @@ public class Operation {
 
     /**
      * Getteur id
-     * @return
+     * @return L'id
      */
     public int getId() {
         return id;
@@ -56,7 +67,7 @@ public class Operation {
 
     /**
      * Setteur id
-     * @param id
+     * @param id L'id
      */
     public void setId(int id) {
         this.id = id;
@@ -64,7 +75,7 @@ public class Operation {
 
     /**
      * Getteur date
-     * @return
+     * @return La date
      */
     public LocalDate getDate() {
         return date;
@@ -72,7 +83,7 @@ public class Operation {
 
     /**
      * Setteur date
-     * @param date
+     * @param date La date
      */
     public void setDate(LocalDate date) {
         this.date = date;
@@ -80,7 +91,7 @@ public class Operation {
 
     /**
      * Getteur montant
-     * @return
+     * @return Le montant
      */
     public double getMontant() {
         return montant;
@@ -88,7 +99,7 @@ public class Operation {
 
     /**
      * Setteur montant
-     * @param montant
+     * @param montant Le montant
      */
     public void setMontant(double montant) {
         this.montant = montant;
@@ -96,7 +107,7 @@ public class Operation {
 
     /**
      * Getteur motif
-     * @return
+     * @return Le motif
      */
     public String getMotif() {
         return motif;
@@ -104,7 +115,7 @@ public class Operation {
 
     /**
      * Setteur motif
-     * @param motif
+     * @param motif Le motif
      */
     public void setMotif(String motif) {
         this.motif = motif;
@@ -112,7 +123,7 @@ public class Operation {
 
     /**
      * getteur compte
-     * @return
+     * @return Le compte
      */
     public Compte getCompte() {
         return compte;
@@ -120,9 +131,24 @@ public class Operation {
 
     /**
      * Setteur compte
-     * @param compte
+     * @param compte Le compte
      */
     public void setCompte(Compte compte) {
         this.compte = compte;
+    }
+
+    /**
+     * Redefinition toString()
+     * @return Une chaîne de caractère avec la description de l'opération
+     */
+    @Override
+    public String toString() {
+        return "Operation{" +
+                "id=" + id +
+                ", date=" + date +
+                ", montant=" + montant +
+                ", motif='" + motif + '\'' +
+                ", compte=" + compte +
+                '}';
     }
 }

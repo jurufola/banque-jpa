@@ -13,13 +13,13 @@ public class Virement extends Operation{
     /**
      * Constructeur
      *
-     * @param date
-     * @param montant
-     * @param motif
-     * @param compte
+     * @param date  La date
+     * @param montant Le montant
+     * @param motif Le motif
+     * @param compte Le compte
      */
     public Virement(LocalDate date, double montant, String motif, Compte compte, String beneficiaire) {
-        super(date, montant, motif, compte);
+        super(date, -montant, motif, compte);
         this.beneficiaire = beneficiaire;
     }
 
@@ -31,7 +31,7 @@ public class Virement extends Operation{
 
     /**
      * Getteur bénéficiaire
-     * @return
+     * @return Le bénéficiaire
      */
     public String getBeneficiaire() {
         return beneficiaire;
@@ -39,9 +39,20 @@ public class Virement extends Operation{
 
     /**
      * Setteur bébéficiaire
-     * @param beneficiaire
+     * @param beneficiaire Le bénéficiaire
      */
     public void setBeneficiaire(String beneficiaire) {
         this.beneficiaire = beneficiaire;
+    }
+
+    /**
+     * Redefinition toString()
+     * @return Une chaîne de caractère avec la description du virement
+     */
+    @Override
+    public String toString() {
+        return "Virement{" +
+                "beneficiaire='" + beneficiaire + '\'' +
+                '}';
     }
 }

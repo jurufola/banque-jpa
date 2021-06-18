@@ -3,6 +3,10 @@ package home.jurufola.entites;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Classe LivretA
+ * @author juruf_000
+ */
 @Entity
 @Table(name = "livretA")
 public class LivretA extends Compte{
@@ -12,10 +16,10 @@ public class LivretA extends Compte{
     /**
      * Constructeur
      *
-     * @param numero
-     * @param solde
-     * @param operations
-     * @param clients
+     * @param numero Le numero de compte
+     * @param solde Le solde
+     * @param operations La liste des opérations
+     * @param clients La liste des clients
      */
     public LivretA(String numero, double solde, List<Operation> operations, List<Client> clients, double taux) {
         super(numero, solde, operations, clients);
@@ -30,7 +34,7 @@ public class LivretA extends Compte{
 
     /**
      * Getteur taux
-     * @return
+     * @return Le taux
      */
     public double getTaux() {
         return taux;
@@ -38,9 +42,20 @@ public class LivretA extends Compte{
 
     /**
      * Setteur taux
-     * @param taux
+     * @param taux Le taux
      */
     public void setTaux(double taux) {
         this.taux = taux;
+    }
+
+    /**
+     * Redefinition toString()
+     * @return Une chaîne de caractère avec la description du livretA
+     */
+    @Override
+    public String toString() {
+        return "LivretA{" +
+                "taux=" + taux +
+                '}';
     }
 }

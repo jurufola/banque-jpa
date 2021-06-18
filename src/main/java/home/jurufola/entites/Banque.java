@@ -3,6 +3,10 @@ package home.jurufola.entites;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Classe Banque
+ * @author juruf_000
+ */
 @Entity
 @Table(name = "banque")
 public class Banque {
@@ -81,5 +85,18 @@ public class Banque {
      */
     public void setClients(List<Client> clients) {
         this.clients = clients;
+    }
+
+    /**
+     * Redefinition toString()
+     * @return Une chaîne de caractère avec la description de la banque
+     */
+    @Override
+    public String toString() {
+        return "Banque{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", clients=" + clients +
+                '}';
     }
 }
